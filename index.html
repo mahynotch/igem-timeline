@@ -4,32 +4,61 @@
 <head>
   <title>Timeline and due dates for iGem</title>
   <link href="dist/css/timeline.min.css" rel="stylesheet" />
+  <link href="dist/css/style.css" rel="stylesheet" />
 </head>
 
 <body>
   <h2>igem完整时间表</h2>
-  <p>以下除特别标注外具体时间均为标记日期的 16:00 UTC (北京时间次日0点)，日期均来自<a href="https://competition.igem.org/calendar">igem-calendar</a></p>
-  <div id="ChinaTime"></div>
-  <div id="UTCTime"></div>
+  <p>
+    以下除特别标注外具体时间均为标记日期的 16:00 UTC
+    (北京时间次日0点)，日期均来自<a href="https://competition.igem.org/calendar">igem-calendar</a>
+  </p>
+  <div id="currentTime">
+    <b>当前时间</b>
+    <div id="ChinaTime"></div>
+    <div id="UTCTime"></div>
+  </div>
+  <div id="importantMessages">
+    <ul>
+      <b>其他重要信息</b>
+      <li>
+        <a href="https://competition.igem.org/participation/new-in-2023">2023规则变动</a>
+      </li>
+      <li>
+        <a href="https://responsibility.igem.org/safety-forms/project-safety?year=2023">安全表（safety form）</a>
+      </li>
+      <li>
+        <a href="https://uploads.igem.org/teams">团队文件上传（包括wiki、视频等）</a>
+      </li>
+      <li>
+        <a href="https://responsibility.igem.org/safety-forms/check-in?year=2023">确认表（check in form）</a>
+      </li>
+      <li>
+        <a href="https://competition.igem.org/deliverables/introduction">上传内容总则</a>
+      </li>
+    </ul>
+  </div>
   <div class="timeline">
     <div class="timeline__wrap">
       <div class="timeline__items">
         <div class="timeline__item">
           <div class="timeline__content">
             <h2>6月22日</h2>
-            <h4>safety form第一版提交截止</h4>
+            <h4>安全表第一版提交截止</h4>
             <p>需在此日期前完整填写安全表的第一稿并提交（需要pi监督审核）</p>
-            <a href="https://competition.igem.org/deliverables/safety-forms">safety form</a>
+            <a href="https://competition.igem.org/deliverables/safety-forms">填写位置</a>
           </div>
         </div>
         <div class="timeline__item">
           <div class="timeline__content">
             <h2>6月29日</h2>
-            <h4>选择赛道（village）</h4>
+            <h4>选择赛道（village）截止</h4>
             <p>需在此日期前选择赛道，如诊断、环境</p>
             <a href="https://competition.igem.org/deliverables/village-selection">具体要求</a>
-            <h4>完成项目简介网页制作</h4>
-            <p>需在此日期前完成项目简介网页的制作</p>
+            <h4>项目简介网页制作及上传截止</h4>
+            <p>
+              需在此日期前完成项目简介网页草稿的制作与上传，之后依旧可以修改
+            </p>
             <a href="https://competition.igem.org/deliverables/project-description">具体要求</a>
           </div>
         </div>
@@ -67,7 +96,9 @@
           <div class="timeline__content">
             <h2>10月12日</h2>
             <h4>Freeze day</h4>
-            <p>最终评分表截止，项目信息截止，wiki填写截止，使用材料填写截止，软件上传截止，项目标题和概要提交截止</p>
+            <p>
+              最终评分表截止，项目信息截止，wiki填写截止，使用材料填写截止，软件上传截止，项目标题和概要提交截止
+            </p>
             <a href="https://competition.igem.org/deliverables/judging-form">judging form</a>
             <a href="https://competition.igem.org/deliverables/team-wiki">wiki</a>
             <a href="https://competition.igem.org/deliverables/part-pages">registry parts</a>
@@ -78,13 +109,13 @@
         <div class="timeline__item">
           <div class="timeline__content">
             <h2>10月19日</h2>
-            <h4>评分视频提交时间</h4>
+            <h4>评分视频提交截止</h4>
             <p>需在此日期前按照要求上传评委评审用视频</p>
           </div>
         </div>
         <div class="timeline__item">
           <div class="timeline__content">
-            <h2>11月2日 00:00UTC</h2>
+            <h2>11月2日-11月5日 00:00UTC</h2>
             <h4>线下聚会集答辩</h4>
             <p>赴法国参与答辩</p>
             <a href="https://competition.igem.org/deliverables/judging-session">具体要求</a>
@@ -100,6 +131,7 @@
       </div>
     </div>
   </div>
+  <div></div>
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"
     integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
   <script src="dist/js/timeline.min.js"></script>
@@ -109,9 +141,13 @@
 
     setInterval(() => {
       time = new Date();
-      document.getElementById('UTCTime').innerHTML = `UTC时间：${time.toUTCString()}`; // 标准时间：Wed Apr 22 2020 18:53:43 GMT+0800 (中国标准时间)
-      document.getElementById('ChinaTime').innerHTML = `中国时间：${time.toLocaleDateString()} ${time.toLocaleTimeString()}`; // 转化后的时间：2020/4/22 下午6:54:25
-    }, 1000)
+      document.getElementById(
+        "ChinaTime"
+      ).innerHTML = `中国时间：${time.toLocaleDateString()} ${time.toLocaleTimeString()}`;
+      document.getElementById(
+        "UTCTime"
+      ).innerHTML = `UTC时间：${time.toUTCString()}`;
+    }, 1000);
   </script>
 </body>
 
